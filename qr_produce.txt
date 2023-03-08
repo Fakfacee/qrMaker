@@ -1,0 +1,18 @@
+from amzqr import amzqr
+import os
+from openpyxl import load_workbook
+from amazing_qr import qr_make
+
+file_name ='单管号清单.xlsx' 
+wb = load_workbook(file_name)
+ws = wb.active
+rows = ws.max_row
+
+for i in range(1,rows):
+    spool = ws.cell(i,1).value
+    print(spool)
+    
+    qr_make(spool)
+    i = i+1
+
+print('finish')
